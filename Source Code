@@ -1,0 +1,80 @@
+
+/*
+For more on us vist http://coderdojobexhill.wix.com/thecodedojo#!work/c19b4
+For more with Arduino http://www.arduino.cc
+
+This is the code to make a LED blink with sound.
+You have to set the threshold so it' sensible enough to make the led blink.
+ 
+You connect an LED to PIN13 and the Sound Sensor to Analog Pin 0
+ */
+int led1 = 9;
+int led2 = 10;
+int led3 = 11;//pins
+int led4 = 12;
+
+int threshold1 = 240;// change these accordingly
+int threshold2 = 245;
+int threshold3 = 250;
+int threshold4 = 260;
+
+int volume1 = 210;// change these accordingly
+int volume2 = 220;
+int volume3 = 230;
+int volume4 = 240;
+
+
+ 
+void setup() {                
+  Serial.begin(9600); // For debugging
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  
+}
+ 
+void loop() {
+  
+  volume1 = analogRead(A1);// Reads the value from the Analog PIN A1
+  volume2 = analogRead(A1);// Reads the value from the Analog PIN A1
+  volume3 = analogRead(A1);// Reads the value from the Analog PIN A1
+  volume4 = analogRead(A1);// Reads the value from the Analog PIN A1
+  
+    //Debug mode
+    Serial.println(volume1);//prints out volume for the LED1
+    Serial.println(volume2);//prints out volume for the LED2
+    Serial.println(volume3);//prints out volume for the LED3
+    Serial.println(volume4);//prints out volume for the LED4
+    delay(10);
+  
+  
+  if(volume1>=threshold1){
+    digitalWrite(led1, HIGH); //Turn ON Led
+  }  
+  else{
+    digitalWrite(led1, LOW); // Turn OFF Led
+  }
+ 
+ 
+ if(volume2>=threshold2){
+    digitalWrite(led2, HIGH); //Turn ON Led
+  }  
+  else{
+    digitalWrite(led2, LOW); // Turn OFF Led
+  }
+  
+   if(volume3>=threshold3){
+    digitalWrite(led3, HIGH); //Turn ON Led
+  }  
+  else{
+    digitalWrite(led3, LOW); // Turn OFF Led
+  }
+  
+     if(volume4>=threshold4){
+    digitalWrite(led4, HIGH); //Turn ON Led
+  }  
+  else{
+    digitalWrite(led4, LOW); // Turn OFF Led
+  }
+}
